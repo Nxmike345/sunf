@@ -29,14 +29,18 @@ describe('template spec', () => {
     cy.get('.header-links > ul > :nth-child(1) > .account')
       .should('include.text', randomEmail);
 
+    // Click on "Digital Downloads"  
     cy.get('.top-menu > :nth-child(5) > a').click()
 
+    // Add product to the cart
     cy.get('.product-item').first().within(() => {
       cy.get('.button-2.product-box-add-to-cart-button').click(); 
     });
 
+    // Click on the Cart
     cy.get('.ico-cart > .cart-label').click()
 
+    // Assert the product name
     cy.get('.product-name').first()
       .should('contain.text', '3rd Album');
 
